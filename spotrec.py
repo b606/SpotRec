@@ -460,13 +460,10 @@ class FFmpeg:
 
         self.pulse_input = _pa_recording_sink_name + ".monitor"
 
-        if _tmp_file:
-            # Use a dot as filename prefix to hide the file until the recording was successful
-            self.tmp_file_prefix = "."
-            self.filename = self.tmp_file_prefix + \
-                os.path.basename(file) + "." + _audio_codec
-        else:
-            self.filename = os.path.basename(file) + "." +_audio_codec
+        # Use a dot as filename prefix to hide the file until the recording was successful
+        self.tmp_file_prefix = "."
+        self.filename = self.tmp_file_prefix + \
+            os.path.basename(file) + "." + _audio_codec
 
         # save this to self because metadata_params is discarded after this function
         self.cover_url = metadata_for_file.pop('cover_url')
